@@ -21,10 +21,7 @@ RUN rm jdk-8u74-linux-x64.tar.gz
 RUN ln -s /opt/java/bin/java /usr/bin/java
 
 ############################################################
-# Install Kafka.
+# Install Zookeeper.
 WORKDIR /opt/
-RUN wget http://shinyfeather.com/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz
-RUN tar xf kafka_2.11-0.9.0.1.tgz
-RUN rm kafka_2.11-0.9.0.1.tgz
-WORKDIR /opt/kafka_2.11-0.9.0.1
-CMD bin/kafka-server-start.sh config/server.properties
+RUN sudo apt-get -y install zookeeperd
+CMD service zookeeper start && /bin/bash
