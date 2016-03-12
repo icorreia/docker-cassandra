@@ -7,9 +7,6 @@ MAINTAINER Ivo Correia
 
 ENV TERM linux
 
-# Folder creation.
-RUN mkdir /opt/java
-
 # Update repository and install required tools.
 RUN sudo apt-get update
 
