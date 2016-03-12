@@ -2,11 +2,9 @@
 # Dockerfile to create a Cassandra Node
 # Based on Ubuntu image
 ############################################################
-
-FROM ubuntu
+FROM java
 MAINTAINER Ivo Correia
 
-ENV JAVA_HOME /opt/java/jdk1.8.0_74
 ENV TERM linux
 
 # Folder creation.
@@ -14,15 +12,6 @@ RUN mkdir /opt/java
 
 # Update repository and install required tools.
 RUN sudo apt-get update
-RUN sudo apt-get -y install wget vim telnet curl
-
-############################################################
-# Install Java.
-RUN wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" 'http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz'
-RUN tar xvf jdk-8u74-linux-x64.tar.gz
-RUN mv jdk1.8.0_74 opt/java/
-RUN rm jdk-8u74-linux-x64.tar.gz
-RUN ln -s /opt/java/jdk1.8.0_74/bin/java /usr/bin/java
 
 ############################################################
 # Install Cassandra.
